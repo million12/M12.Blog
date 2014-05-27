@@ -1,38 +1,48 @@
 
-'RobertLemke.Plugin.Blog:Post':
+'M12.Blog:Post':
   superTypes:
     - 'TYPO3.Neos:Document'
   ui:
     label: 'Blog Post'
-    group: blog
     icon: 'icon-file-text'
     inspector:
       groups:
-        page:
-          label: 'Blog Post'
+        document:
+          label: 'Blog Post Options'
+          position: 10
         moreinfo:
-          label: 'More Info'
+          label: 'Blog Post Extra Info'
+          position: 21
   childNodes:
+    synopsis:
+      type: 'TYPO3.Neos:ContentCollection'
     main:
       type: 'TYPO3.Neos:ContentCollection'
-    comments:
-      type: 'TYPO3.Neos:ContentCollection'
   properties:
+    # Override default 'Document' title property
+    title:
+      ui:
+        label: Post title
+        inlineEditable: TRUE
+        aloha:
+          'format': []
+          'link':
+            'a': FALSE
+    author:
+      type: string
+      ui:
+        label: Author
+        inspector:
+          group: document
     datePublished:
       type: date
       ui:
         label: 'Publication Date'
         reloadIfChanged: true
         inspector:
-          group: page
-    author:
-      type: string
-      ui:
-        label: Author
-        inspector:
-          group: page
+          group: document
     relatedPosts:
-      type: string
+      type: references
       ui:
         label: 'Related Posts'
         inspector:
@@ -50,96 +60,8 @@
         inspector:
           group: moreinfo
 
-'RobertLemke.Plugin.Blog:Comment':
-  superTypes:
-    - 'TYPO3.Neos:Content'
-  ui:
-    label: 'Blog Comment'
-    group: blog
-    inspector:
-      groups:
-        comment:
-          label: 'Blog Comment'
-  properties:
-    datePublished:
-      type: date
-      ui:
-        label: 'Publication Date'
-        reloadIfChanged: true
-        inspector:
-          group: comment
-    author:
-      type: string
-      ui:
-        label: Author
-        reloadIfChanged: true
-        inspector:
-          group: comment
-    emailAddress:
-      type: string
-      ui:
-        label: 'Email Address'
-        reloadIfChanged: true
-        inspector:
-          group: comment
-    spam:
-      type: boolean
-      ui:
-        label: Spam
-        inspector:
-          group: comment
-    text:
-      type: string
-      defaultValue: '<p>Your Comment Here</p>'
-      ui:
-        inlineEditable: true
 
-'RobertLemke.Plugin.Blog:Quote':
-  superTypes:
-    - 'TYPO3.Neos:Content'
-  ui:
-    group: blog
-    label: 'Blog Quote'
-    inspector:
-      groups:
-        quote:
-          label: 'Blog Quote'
-  properties:
-    citeAuthor:
-      type: string
-      ui:
-        label: 'Cite Author'
-        reloadIfChanged: true
-        inspector:
-          group: quote
-    citeAuthorUri:
-      type: string
-      ui:
-        label: 'Cite Author URI'
-        reloadIfChanged: true
-        inspector:
-          group: quote
-    citeUri:
-      type: string
-      ui:
-        label: 'Cite URI'
-        reloadIfChanged: true
-        inspector:
-          group: quote
-    citeUriLabel:
-      type: string
-      ui:
-        label: 'Cite URI Label'
-        reloadIfChanged: true
-        inspector:
-          group: quote
-    text:
-      type: string
-      defaultValue: '<p>Enter quote here</p>'
-      ui:
-        inlineEditable: true
-
-'RobertLemke.Plugin.Blog:PostPlugin':
+'M12.Blog:PostPlugin':
   superTypes:
     - 'TYPO3.Neos:Content'
   ui:

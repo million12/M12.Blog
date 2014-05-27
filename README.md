@@ -1,27 +1,20 @@
-TYPO3 Neos Blog Plugin
-======================
+TYPO3 Neos very simple Blog plugin
+==================================
 
-This plugin provides a node-based plugin for TYPO3 Neos websites.
+This plugin provides a node-based plugin for TYPO3 Neos websites. It's based on [RobertLemke.Plugin.Blog](https://github.com/robertlemke/RobertLemke.Plugin.Blog) work - thank you!
 
-Note: this package is still experimental and may change heavily in the near future.
+Features
+-----------
+* **Blog Post** page type.
+* **Blog Post Overview** plugin to create blog post index.
 
 Quick start
 -----------
-* include the Plugin's route definitions to your `Routes.yaml` file, just like
 
-```yaml
--
-  name: 'RobertLemkeBlogPlugin'
-  uriPattern: '<RobertLemkeBlogPluginSubroutes>'
-  subRoutes:
-    RobertLemkeBlogPlugin:
-      package: RobertLemke.Plugin.Blog
-```
+Simply install plugin using:
 
-* include the plugin's TypoScript definitions to your own one's (located in, for example, `Packages/Sites/Your.Site/Resources/Private/TypoScripts/Library/ContentElements.ts2`, with:
+```composer require m12/neos-blog:dev-master```
 
-```
-include: resource://RobertLemke.Plugin.Blog/Private/TypoScripts/Library/NodeTypes.ts2
-```
-
-* add the plugin content element "Blog Post Overview" to the position of your choice.
+That's all. You can start bloggin.
+* add new post by adding new 'Blog Post' page in your page tree
+* add the plugin 'Blog Post Overview' to the position of your choice to render post list.

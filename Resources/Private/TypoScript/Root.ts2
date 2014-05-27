@@ -1,0 +1,31 @@
+# Add a new matcher to the rendering of the main content (PrimaryContent) to check if the current node
+# is a blog post document. In this case we don't render a ContentCollection like the default matcher
+# but render the blog post TypoScript object.
+prototype(TYPO3.Neos:PrimaryContent).blogPost {
+	condition = ${q(documentNode).is('[instanceof M12.Blog:Post]')}
+	type = 'M12.Blog:Post'
+}
+
+prototype(M12.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://M12.Blog/Private/Templates/Post/Post.html'
+	node = ${node}
+
+	synopsis = TYPO3.Neos:ContentCollection {
+		nodePath = 'synopsis'
+		@cache {
+			mode = 'cached'
+		}
+	}
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+		@cache {
+			mode = 'cached'
+		}
+	}
+}
+
+prototype(M12.Blog:PostPlugin) < prototype(TYPO3.Neos:Plugin) {
+	package = 'M12.Blog'
+	controller = 'Post'
+	action = 'index'
+}

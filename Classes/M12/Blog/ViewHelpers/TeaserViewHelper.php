@@ -1,8 +1,8 @@
 <?php
-namespace RobertLemke\Plugin\Blog;
+namespace M12\Blog\ViewHelpers;
 
 /*                                                                        *
- * This script belongs to the FLOW3 package "Blog".                       *
+ * This script belongs to the FLOW3 package "Blog".                      *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -21,25 +21,32 @@ namespace RobertLemke\Plugin\Blog;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use \TYPO3\Flow\Package\Package as BasePackage;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 
 /**
- * The Blog Package
+ * This view helper crops the text of a blog post in a meaningful way.
  *
+ * @api
  */
-class Package extends BasePackage {
+class TeaserViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
-	 * Invokes custom PHP code directly after the package manager has been initialized.
-	 *
-	 * @param \TYPO3\Flow\Core\Bootstrap $bootstrap The current bootstrap
-	 * @return void
+	 * @Flow\Inject
+	 * @var \M12\Blog\Service\ContentService
 	 */
-	public function boot(\TYPO3\Flow\Core\Bootstrap $bootstrap) {
-		$dispatcher = $bootstrap->getSignalSlotDispatcher();
-		$dispatcher->connect('RobertLemke\Plugin\Blog\Controller\CommentController', 'commentCreated', 'RobertLemke\Plugin\Blog\Service\NotificationService', 'sendNewCommentNotification');
-	}
+	protected $contentService;
 
+	/**
+	 * Render a teaser
+	 *
+	 * @param \TYPO3\TYPO3CR\Domain\Model\NodeInterface $node
+	 * @return string cropped text
+	 */
+	public function render(NodeInterface $node) {
+		return $this->contentService->renderTeaser($node);
+	}
 }
+
 
 ?>

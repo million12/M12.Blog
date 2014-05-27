@@ -1,8 +1,8 @@
 <?php
-namespace RobertLemke\Plugin\Blog\Service;
+namespace M12\Blog\Service;
 
 /*                                                                        *
- * This script belongs to the FLOW3 package "Blog".                      *
+ * This script belongs to the FLOW3 package "Blog".                       *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU General Public License as published by the Free   *
@@ -34,55 +34,19 @@ class ContentService {
 	/**
 	 * Renders the given Node as a teaser text with up to 600 characters, with all <p> and <a> tags removed.
 	 *
-	 * @param NodeInterface $node
+	 * @param NodeInterface $postNode
 	 * @return mixed
 	 */
-	public function renderTeaser(NodeInterface $node) {
-		$stringToTruncate = '';
+	public function renderTeaser(NodeInterface $postNode) {
+		$teaser = '';
 
-		foreach ($node->getNode('main')->getChildNodes('TYPO3.Neos.NodeTypes:Text') as $contentNode) {
-			foreach ($contentNode->getProperties() as $propertyValue) {
-				if (!is_object($propertyValue) || method_exists($propertyValue, '__toString')) {
-					$stringToTruncate .= $propertyValue;
-				}
+		/** @var NodeInterface $teaserNode */
+		foreach ($postNode->getNode('synopsis')->getChildNodes('TYPO3.Neos:Content') as $teaserNode) {
+			if ($teaserNode->hasProperty('text')) {
+				$teaser .= $teaserNode->getProperty('text');
 			}
 		}
 
-		$jumpPosition = strpos($stringToTruncate, '<!-- read more -->');
-
-		if ($jumpPosition !== FALSE) {
-			return $this->stripUnwantedTags(substr($stringToTruncate, 0, ($jumpPosition - 1)));
-		}
-
-		$jumpPosition = strpos($stringToTruncate, '</p>');
-		if ($jumpPosition !== FALSE && $jumpPosition < 600) {
-			return $this->stripUnwantedTags(substr($stringToTruncate, 0, $jumpPosition + 4));
-		}
-
-		if (strlen($stringToTruncate) > 500) {
-			return substr($this->stripUnwantedTags($stringToTruncate), 0, 501) . ' ...';
-		} else {
-			return $this->stripUnwantedTags($stringToTruncate);
-		}
-
-	}
-
-	/**
-	 * If the content starts with <p> and ends with </p> these tags are stripped.
-	 *
-	 * @param string $content The original content
-	 * @return string The stripped content
-	 */
-	protected function stripUnwantedTags($content) {
-		$content = trim($content);
-		$content = preg_replace(array('/\\<a [^\\>]+\\>/', '/\<\\/a\\>/', '/\\<span style[^\\>]+\\>/'), '', $content);
-		$content = str_replace('&nbsp;', ' ', $content);
-
-		if (substr($content, 0, 3) === '<p>' && substr($content, -4, 4) === '</p>') {
-			$content = substr($content, 3, -4);
-		}
-		return trim($content);
+		return $teaser;
 	}
 }
-
-?>
