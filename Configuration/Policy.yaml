@@ -1,9 +1,9 @@
 
 resources:
   methods:
-    'M12.Blog:Frontend': 'method(M12\Blog\Controller\PostController->(index|latest|error)Action())'
+    'M12.Plugin.Blog:Frontend': 'method(M12\Plugin\Blog\Controller\PostController->(index|latest|error)Action())'
 
 acls:
   Everybody:
     methods:
-      'M12.Blog:Frontend': GRANT
+      'M12.Plugin.Blog:Frontend': GRANT

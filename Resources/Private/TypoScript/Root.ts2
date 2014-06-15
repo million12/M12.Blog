@@ -2,12 +2,12 @@
 # is a blog post document. In this case we don't render a ContentCollection like the default matcher
 # but render the blog post TypoScript object.
 prototype(TYPO3.Neos:PrimaryContent).blogPost {
-	condition = ${q(documentNode).is('[instanceof M12.Blog:Post]')}
-	type = 'M12.Blog:Post'
+	condition = ${q(documentNode).is('[instanceof M12.Plugin.Blog:Post]')}
+	type = 'M12.Plugin.Blog:Post'
 }
 
-prototype(M12.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
-	templatePath = 'resource://M12.Blog/Private/Templates/Post/Post.html'
+prototype(M12.Plugin.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://M12.Plugin.Blog/Private/Templates/Post/Post.html'
 	node = ${node}
 
 	synopsis = TYPO3.Neos:ContentCollection {
@@ -26,10 +26,10 @@ prototype(M12.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
 	abc = 'abc value'
 }
 
-prototype(M12.Blog:PostPlugin) < prototype(TYPO3.Neos:Plugin) {
+prototype(M12.Plugin.Blog:PostPlugin) < prototype(TYPO3.Neos:Plugin) {
 	node = ${node}
 
-	package = 'M12.Blog'
+	package = 'M12.Plugin.Blog'
 	controller = 'Post'
 	action = ${node.properties.mode ? node.properties.mode : 'index'}
 }

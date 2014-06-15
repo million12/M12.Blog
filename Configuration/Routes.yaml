@@ -3,7 +3,7 @@
 #                                                                        #
 
 # http://example.com/blog
-# &--m12_blog-postplugin[@package]=M12.Blog&--m12_blog-postplugin[@controller]=Post&--m12_blog-postplugin[@action]=index&--m12_blog-postplugin[--posts-paginator][@package]=&--m12_blog-postplugin[--posts-paginator][@subpackage]=&--m12_blog-postplugin[--posts-paginator][@controller]=&--m12_blog-postplugin[--posts-paginator][@action]=index&--m12_blog-postplugin[--posts-paginator][currentPage]=1
+# &--m12_blog-postplugin[@package]=M12.Plugin.Blog&--m12_blog-postplugin[@controller]=Post&--m12_blog-postplugin[@action]=index&--m12_blog-postplugin[--posts-paginator][@package]=&--m12_blog-postplugin[--posts-paginator][@subpackage]=&--m12_blog-postplugin[--posts-paginator][@controller]=&--m12_blog-postplugin[--posts-paginator][@action]=index&--m12_blog-postplugin[--posts-paginator][currentPage]=1
 
 -
   name: 'Blog post pagination - page > 1'
@@ -14,7 +14,7 @@
     '@format':     'html'
     '@action':     'show'
     '--m12_blog-postplugin':
-      '@package':     'M12.Blog'
+      '@package':     'M12.Plugin.Blog'
       '@controller':  'Post'
       '@action':      'index'
       '--posts-paginator':

@@ -1,5 +1,5 @@
 <?php
-namespace M12\Blog\ViewHelpers;
+namespace M12\Plugin\Blog\ViewHelpers;
 
 /*                                                                        *
  * This script belongs to the FLOW3 package "Blog".                      *
@@ -26,23 +26,23 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 
 
 /**
- * This view helper render blog post tags
+ * This view helper get/render blog post synopsis content
  */
-class TagsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class TeaserViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * @Flow\Inject
-	 * @var \M12\Blog\Service\ContentService
+	 * @var \M12\Plugin\Blog\Service\ContentService
 	 */
 	protected $contentService;
 
 	/**
-	 * Render tags
+	 * Render a teaser
 	 *
 	 * @param \TYPO3\TYPO3CR\Domain\Model\NodeInterface $node
 	 * @return string cropped text
 	 */
 	public function render(NodeInterface $node) {
-		return $this->contentService->renderTags($node);
+		return $this->contentService->renderTeaser($node);
 	}
 }

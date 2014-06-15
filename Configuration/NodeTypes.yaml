@@ -1,5 +1,5 @@
 
-'M12.Blog:Post':
+'M12.Plugin.Blog:Post':
   superTypes:
     - 'TYPO3.Neos:Document'
   ui:
@@ -48,7 +48,7 @@
 #        inspector:
 #          group: blogPostExtras
 #          editorOptions:
-#            nodeTypes: ['M12.Blog:Post']
+#            nodeTypes: ['M12.Plugin.Blog:Post']
     tags:
       type: string
       ui:
@@ -60,7 +60,7 @@
           regularExpression: '/^[- a-z0-9,]+$/'
 
 
-'M12.Blog:PostPlugin':
+'M12.Plugin.Blog:PostPlugin':
   superTypes:
     - 'TYPO3.Neos:Content'
   ui:

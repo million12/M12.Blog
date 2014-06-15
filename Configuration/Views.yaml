@@ -1,7 +1,7 @@
 -
-  requestFilter: 'isPackage("M12.Blog") || parentRequest.isPackage("M12.Blog")'
+  requestFilter: 'isPackage("M12.Plugin.Blog") || parentRequest.isPackage("M12.Plugin.Blog")'
   options:
     templateRootPaths:
-      'TYPO3.TYPO3CR': 'resource://M12.Blog/Private/Templates'
+      'TYPO3.TYPO3CR': 'resource://M12.Plugin.Blog/Private/Templates'
     partialRootPaths:
-      'M12.Blog': 'resource://M12.Blog/Private/Templates/Post/Partials'
+      'M12.Plugin.Blog': 'resource://M12.Plugin.Blog/Private/Templates/Post/Partials'

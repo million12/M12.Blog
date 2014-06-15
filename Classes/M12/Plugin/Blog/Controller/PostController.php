@@ -1,6 +1,6 @@
 <?php
 
-namespace M12\Blog\Controller;
+namespace M12\Plugin\Blog\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
@@ -9,7 +9,7 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 
 
 /**
- * The posts controller for the M12.Blog package
+ * The posts controller for the M12.Plugin.Blog package
  *
  * @Flow\Scope("singleton")
  */
@@ -38,7 +38,7 @@ class PostController extends ActionController {
 		$postsSourceNode = $this->getPostsSourceNode($node);
 
 		$this->view->assign('postsSourceNode', $postsSourceNode);
-		$this->view->assign('hasPostNodes', $postsSourceNode->hasChildNodes('M12.Blog:Post'));
+		$this->view->assign('hasPostNodes', $postsSourceNode->hasChildNodes('M12.Plugin.Blog:Post'));
 		$this->view->assign('itemsPerPage', $this->getPostsLimit($node));
 	}
 
@@ -49,8 +49,8 @@ class PostController extends ActionController {
 		$node = $this->getPluginNode();
 		$postsSourceNode = $this->getPostsSourceNode($node);
 
-		$this->view->assign('hasPostNodes', $postsSourceNode->hasChildNodes('M12.Blog:Post'));
-		$this->view->assign('postNodes', $postsSourceNode->getChildNodes('M12.Blog:Post', $this->getPostsLimit($node)));
+		$this->view->assign('hasPostNodes', $postsSourceNode->hasChildNodes('M12.Plugin.Blog:Post'));
+		$this->view->assign('postNodes', $postsSourceNode->getChildNodes('M12.Plugin.Blog:Post', $this->getPostsLimit($node)));
 	}
 
 	/**
@@ -79,7 +79,7 @@ class PostController extends ActionController {
 	}
 
 	/**
-	 * Get node from which M12.Blog:Post are sourced (they have to be child nodes there)
+	 * Get node from which M12.Plugin.Blog:Post are sourced (they have to be child nodes there)
 	 *
 	 * @param NodeInterface $node Plugin node
 	 * @throws \TYPO3\Neos\Exception

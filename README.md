@@ -5,8 +5,8 @@ This plugin provides a node-based plugin for TYPO3 Neos websites. It's based on 
 
 Features
 -----------
-* **Blog Post** page type (M12.Blog:Post)
-* **Blog Post Overview** plugin to create blog post index (M12.Blog:PostPlugin) with two modes:
+* **Blog Post** page type (M12.Plugin.Blog:Post)
+* **Blog Post Overview** plugin to create blog post index (M12.Plugin.Blog:PostPlugin) with two modes:
 	* index: renders list of blog posts, with paginating
 	* latest: render latest blog posts
 

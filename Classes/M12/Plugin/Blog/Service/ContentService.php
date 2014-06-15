@@ -1,5 +1,5 @@
 <?php
-namespace M12\Blog\Service;
+namespace M12\Plugin\Blog\Service;
 
 /*                                                                        *
  * This script belongs to the FLOW3 package "Blog".                       *
