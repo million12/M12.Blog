@@ -4,16 +4,10 @@
 <article class="blog-post" itemtype="http://schema.org/Article" itemscope="">
 	<header>
 		<h1 itemprop="name headline"><neos:contentElement.editable property="title">{title}</neos:contentElement.editable></h1>
-
-		<h6 class="byline">by
-			<span itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">{node.properties.author}</span></span>
-			on
-			<time datetime="{f:format.date(date: node.properties.datePublished, format: 'c')}" itemprop="datePublished"><f:format.date format="F jS, Y">{node.properties.datePublished}</f:format.date></time>
-		</h6>
-
-		<section class="synopsis" itemprop="about">
+		<f:render partial="Post/PostMeta" arguments="{post:node}" />
+		<div class="blog-post-synopsis" itemprop="about">
 			<div itemprop="description"><ts:render path="synopsis" /></div>
-		</section>
+		</div>
 	</header>
 
 	<main itemprop="articleBody">

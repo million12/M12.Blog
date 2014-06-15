@@ -22,10 +22,14 @@ prototype(M12.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
 			mode = 'cached'
 		}
 	}
+
+	abc = 'abc value'
 }
 
 prototype(M12.Blog:PostPlugin) < prototype(TYPO3.Neos:Plugin) {
+	node = ${node}
+
 	package = 'M12.Blog'
 	controller = 'Post'
-	action = 'index'
+	action = ${node.properties.mode ? node.properties.mode : 'index'}
 }

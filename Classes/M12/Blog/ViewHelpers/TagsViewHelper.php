@@ -26,9 +26,9 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 
 
 /**
- * This view helper get/render blog post synopsis content
+ * This view helper render blog post tags
  */
-class TeaserViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class TagsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * @Flow\Inject
@@ -37,12 +37,12 @@ class TeaserViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 	protected $contentService;
 
 	/**
-	 * Render a teaser
+	 * Render tags
 	 *
 	 * @param \TYPO3\TYPO3CR\Domain\Model\NodeInterface $node
 	 * @return string cropped text
 	 */
 	public function render(NodeInterface $node) {
-		return $this->contentService->renderTeaser($node);
+		return $this->contentService->renderTags($node);
 	}
 }

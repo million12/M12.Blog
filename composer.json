@@ -9,6 +9,12 @@
             "email": "marcin@m12.io",
             "homepage": "http://m12.io",
             "role": "Developer"
+        },
+        {
+            "name": "Robert Lemke",
+            "email": "rl@robertlemke.com",
+            "homepage": "http://robertlemke.com",
+            "role": "Developer"
         }
     ],
     "require": {

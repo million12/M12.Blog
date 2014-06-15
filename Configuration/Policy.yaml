@@ -1,7 +1,7 @@
 
 resources:
   methods:
-    'M12.Blog:Frontend': 'method(M12\Blog\Controller\PostController->(index|error)Action())'
+    'M12.Blog:Frontend': 'method(M12\Blog\Controller\PostController->(index|latest|error)Action())'
 
 acls:
   Everybody:

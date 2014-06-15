@@ -49,4 +49,23 @@ class ContentService {
 
 		return $teaser;
 	}
+
+	/**
+	 * Renders tags from coma-separated string, as single tags, wrapped in <SPAN></SPAN> wrapper.
+	 * @param NodeInterface $postNode
+	 * @return string
+	 */
+	public function renderTags(NodeInterface $postNode) {
+		$tags = explode(',', $postNode->getProperty('tags'));
+
+		$tagsContent = '';
+		foreach ($tags as $tag) {
+			if (!($tag = trim($tag))) continue;
+
+			$tagsContent .= $tagsContent ? ' ' : '';
+			$tagsContent .= '<span class="tag blog-post-tag">'.trim($tag).'</span>';
+		}
+
+		return $tagsContent;
+	}
 }

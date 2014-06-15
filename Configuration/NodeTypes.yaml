@@ -10,7 +10,7 @@
         document:
           label: 'Blog Post Options'
           position: 10
-        moreinfo:
+        blogPostExtras:
           label: 'Blog Post Extra Info'
           position: 21
   childNodes:
@@ -41,30 +41,64 @@
         reloadIfChanged: true
         inspector:
           group: document
-    relatedPosts:
-      type: references
-      ui:
-        label: 'Related Posts'
-        inspector:
-          group: moreinfo
-    category:
-      type: string
-      ui:
-        label: Category
-        inspector:
-          group: moreinfo
+#    relatedPosts:
+#      type: references
+#      ui:
+#        label: 'Related Posts'
+#        inspector:
+#          group: blogPostExtras
+#          editorOptions:
+#            nodeTypes: ['M12.Blog:Post']
     tags:
       type: string
       ui:
-        label: Tags
+        label: Tags (coma-separated)
         inspector:
-          group: moreinfo
+          group: blogPostExtras
+      validation:
+        regularExpression:
+          regularExpression: '/^[- a-z0-9,]+$/'
 
 
 'M12.Blog:PostPlugin':
   superTypes:
     - 'TYPO3.Neos:Content'
   ui:
-    label: 'Blog Post Overview'
+    label: 'Blog Posts Overview'
     group: plugins
     icon: 'icon-puzzle-piece'
+    inspector:
+      groups:
+        postPlugin:
+          label: 'Posts Overview Options'
+          position: 10
+  properties:
+    postsSourceNode:
+      type: reference
+      ui:
+        label: 'Posts source node'
+        inspector:
+          group: 'postPlugin'
+    mode:
+      type: string
+      defaultValue: 'index'
+      ui:
+        label: 'Mode'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'postPlugin'
+          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              index:
+                label: 'Posts index'
+              latest:
+                label: 'Latest posts'
+    limit:
+      type: integer
+      defaultValue: 10
+      ui:
+        label: 'Posts limit'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'postPlugin'

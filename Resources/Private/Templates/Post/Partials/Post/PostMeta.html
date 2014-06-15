@@ -1,0 +1,13 @@
+{namespace blog=M12\Blog\ViewHelpers}
+
+<div class="blog-post-meta">
+	<h5 class="byline blog-post-byline" xmlns:f="http://www.w3.org/1999/html">
+		<span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">by <span itemprop="name">{post.properties.author}</span></span>
+		on
+		<time datetime="{f:format.date(date: node.properties.datePublished, format: 'c')}" itemprop="datePublished"><f:format.date format="F jS, Y">{post.properties.datePublished}</f:format.date></time>
+	</h5>
+
+	<f:if condition="{post.properties.tags}">
+		<h5 class="tags blog-post-tags" itemprop="keywords"><blog:tags node="{post}" /></h5>
+	</f:if>
+</div>

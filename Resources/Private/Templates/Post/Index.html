@@ -2,16 +2,17 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace typo3cr=TYPO3\TYPO3CR\ViewHelpers}
 
-<div class="blog-posts">
+<div class="blog-posts blog-posts-index">
 	<f:if condition="{hasPostNodes}">
 		<f:then>
-			<typo3cr:widget.paginate widgetId="posts-paginator" parentNode="{postsNode}" nodeTypeFilter="M12.Blog:Post" as="paginatedPosts" configuration="{itemsPerPage: 5, insertBelow: 1, maximumNumberOfLinks: 15}">
+			<typo3cr:widget.paginate widgetId="posts-paginator" parentNode="{postsSourceNode}" nodeTypeFilter="M12.Blog:Post" as="paginatedPosts" configuration="{itemsPerPage: itemsPerPage, insertBelow: 1, maximumNumberOfLinks: 15}">
 				<f:for each="{paginatedPosts}" as="post">
 					<div class="blog-post-item">
 						<h2><neos:link.node node="{post}">{post.properties.title}</neos:link.node>
 							<f:if condition="{post.removed}"><small>(removed)</small></f:if>
 						</h2>
-						<blog:teaser node="{post}"/>
+						<f:render partial="Post/PostMeta" arguments="{post:post}" />
+						<div class="blog-post-synopsis"><blog:teaser node="{post}"/></div>
 						<neos:link.node node="{post}" class="read-more">Read more</neos:link.node>
 					</div>
 				</f:for>
