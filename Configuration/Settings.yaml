@@ -3,3 +3,9 @@ TYPO3:
     typoScript:
       autoInclude:
         'M12.Plugin.Blog': TRUE
+
+M12:
+  Plugin:
+    Blog:
+      disqusEnabled: FALSE
+      disqusShortname: ''

@@ -9,6 +9,8 @@ Features
 * **Blog Post Overview** plugin to create blog post index (M12.Plugin.Blog:PostPlugin) with two modes:
     * index: renders list of blog posts, with paginating
     * latest: render latest blog posts
+* [Disqus](http://disqus.com/) comments integration
+
 
 Quick start
 -----------
@@ -31,3 +33,15 @@ composer require m12/neos-plugin-blog:*
 * add new post by adding new 'Blog Post' page in your page tree
 * add the plugin 'Blog Post Overview' to the position of your choice to render post list.
     * set _Posts source node_ to node containing blog posts. This step is only required if the plugin node is put somewhere else, not on the node containing blog posts.
+
+Disqus integration
+------------------
+If you'd like to use [Disqus](http://disqus.com/) comments system, you need to configure it. Simply add to your Configuration/Settings.yaml:
+
+```yaml
+M12:
+  Plugin:
+    Blog:
+      disqusEnabled: TRUE
+      disqusShortname: 'registered-disqus-shortname'
+```

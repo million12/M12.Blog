@@ -10,6 +10,9 @@ prototype(M12.Plugin.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://M12.Plugin.Blog/Private/Templates/Post/Post.html'
 	node = ${node}
 
+	nodeIdentifier = ${q(node).property('_nodeData.identifier')}
+	settings = ${Configuration.setting('M12.Plugin.Blog')}
+
 	synopsis = TYPO3.Neos:ContentCollection {
 		nodePath = 'synopsis'
 		@cache {
@@ -22,8 +25,6 @@ prototype(M12.Plugin.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
 			mode = 'cached'
 		}
 	}
-
-	abc = 'abc value'
 }
 
 prototype(M12.Plugin.Blog:PostPlugin) < prototype(TYPO3.Neos:Plugin) {

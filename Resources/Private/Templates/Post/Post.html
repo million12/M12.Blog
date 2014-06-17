@@ -13,4 +13,24 @@
 	<main itemprop="articleBody">
 		<ts:render path="main" />
 	</main>
+
+	<f:if condition="{settings.disqusEnabled}">
+		<div class="disqusWrapper">
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+				/* * * CONFIGURATION VARIABLES * * */
+				var disqus_shortname = '{settings.disqusShortname}';
+				var disqus_identifier = 'node-{nodeIdentifier}';
+				var disqus_title = '{title}';
+				var disqus_url = '{neos:uri.node(absolute:true)}';
+
+				/* * * DON'T EDIT BELOW THIS LINE * * */
+				(function() {
+					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+					dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				})();
+			</script>
+		</div>
+	</f:if>
 </article>
