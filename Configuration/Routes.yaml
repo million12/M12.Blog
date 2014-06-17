@@ -3,17 +3,17 @@
 #                                                                        #
 
 # http://example.com/blog
-# &--m12_blog-postplugin[@package]=M12.Plugin.Blog&--m12_blog-postplugin[@controller]=Post&--m12_blog-postplugin[@action]=index&--m12_blog-postplugin[--posts-paginator][@package]=&--m12_blog-postplugin[--posts-paginator][@subpackage]=&--m12_blog-postplugin[--posts-paginator][@controller]=&--m12_blog-postplugin[--posts-paginator][@action]=index&--m12_blog-postplugin[--posts-paginator][currentPage]=1
+# &--m12_plugin_blog-postplugin[@package]=M12.Plugin.Blog&--m12_plugin_blog-postplugin[@controller]=Post&--m12_plugin_blog-postplugin[@action]=index&--m12_plugin_blog-postplugin[--posts-paginator][@package]=&--m12_plugin_blog-postplugin[--posts-paginator][@subpackage]=&--m12_plugin_blog-postplugin[--posts-paginator][@controller]=&--m12_plugin_blog-postplugin[--posts-paginator][@action]=index&--m12_plugin_blog-postplugin[--posts-paginator][currentPage]=2
 
 -
   name: 'Blog post pagination - page > 1'
-  uriPattern:    '{node}/p/{--m12_blog-postplugin.--posts-paginator.currentPage}'
+  uriPattern:    '{node}/p/{--m12_plugin_blog-postplugin.--posts-paginator.currentPage}'
   defaults:
     '@package':    'TYPO3.Neos'
     '@controller': 'Frontend\Node'
     '@format':     'html'
     '@action':     'show'
-    '--m12_blog-postplugin':
+    '--m12_plugin_blog-postplugin':
       '@package':     'M12.Plugin.Blog'
       '@controller':  'Post'
       '@action':      'index'
