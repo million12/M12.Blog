@@ -7,5 +7,6 @@ TYPO3:
 M12:
   Plugin:
     Blog:
-      disqusEnabled: FALSE
-      disqusShortname: ''
+      disqus:
+        enabled: FALSE
+        shortname: ''

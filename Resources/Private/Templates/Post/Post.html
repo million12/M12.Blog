@@ -14,12 +14,13 @@
 		<ts:render path="main" />
 	</main>
 
-	<f:if condition="{settings.disqusEnabled}">
+	<f:if condition="{settings.disqus.enabled}">
+		<a name="comments"></a>
 		<div class="disqusWrapper">
 			<div id="disqus_thread"></div>
 			<script type="text/javascript">
 				/* * * CONFIGURATION VARIABLES * * */
-				var disqus_shortname = '{settings.disqusShortname}';
+				var disqus_shortname = '{settings.disqus.shortname}';
 				var disqus_identifier = 'node-{nodeIdentifier}';
 				var disqus_title = '{title}';
 				var disqus_url = '{neos:uri.node(absolute:true)}';
