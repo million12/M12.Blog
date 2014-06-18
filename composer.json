@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "typo3/neos-nodetypes": "*"
+        "typo3/neos-nodetypes": "*",
+        "robertlemke/rss":"dev-master"
     },
     "autoload": {
         "psr-0": {

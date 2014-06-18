@@ -1,7 +1,7 @@
 
 resources:
   methods:
-    'M12.Plugin.Blog:Frontend': 'method(M12\Plugin\Blog\Controller\PostController->(index|latest|error)Action())'
+    'M12.Plugin.Blog:Frontend': 'method(M12\Plugin\Blog\Controller\PostController->(index|latest|error)Action()) || method(M12\Plugin\Blog\Controller\RssController->(.+?)Action())'
 
 acls:
   Everybody:

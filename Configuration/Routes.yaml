@@ -6,7 +6,7 @@
 # &--m12_plugin_blog-postplugin[@package]=M12.Plugin.Blog&--m12_plugin_blog-postplugin[@controller]=Post&--m12_plugin_blog-postplugin[@action]=index&--m12_plugin_blog-postplugin[--posts-paginator][@package]=&--m12_plugin_blog-postplugin[--posts-paginator][@subpackage]=&--m12_plugin_blog-postplugin[--posts-paginator][@controller]=&--m12_plugin_blog-postplugin[--posts-paginator][@action]=index&--m12_plugin_blog-postplugin[--posts-paginator][currentPage]=2
 
 -
-  name: 'Blog post pagination - page > 1'
+  name: 'Blog post pagination'
   uriPattern:    '{node}/p/{--m12_plugin_blog-postplugin.--posts-paginator.currentPage}'
   defaults:
     '@package':    'TYPO3.Neos'
@@ -27,3 +27,16 @@
     node:
       handler:    TYPO3\Neos\Routing\FrontendNodeRoutePartHandler
   appendExceedingArguments: false
+
+
+-
+  name:          'RSS Feed routing'
+  uriPattern:    '{node}.rss.xml'
+  defaults:
+    '@package':    'M12.Plugin.Blog'
+    '@controller': 'Rss'
+    '@format':     'xml'
+    '@action':     'rss'
+  routeParts:
+    node:
+      handler:    TYPO3\Neos\Routing\FrontendNodeRoutePartHandler

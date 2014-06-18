@@ -10,3 +10,9 @@ M12:
       disqus:
         enabled: FALSE
         shortname: ''
+      feed:
+        uri: '/blog.rss.xml'
+        postsLimit: 20
+        title: 'TYPO3 Neos Blog'
+        description: 'Blog powered by TYPO3 Neos'
+        defaultAuthor: 'Wawel Dragon'
