@@ -1,9 +1,11 @@
+privilegeTargets:
+  'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'M12.Plugin.Blog:Frontend':
+      matcher: 'method(M12\Plugin\Blog\Controller\PostController->(index|latest|error)Action()) || method(M12\Plugin\Blog\Controller\RssController->(.+?)Action())'
 
-resources:
-  methods:
-    'M12.Plugin.Blog:Frontend': 'method(M12\Plugin\Blog\Controller\PostController->(index|latest|error)Action()) || method(M12\Plugin\Blog\Controller\RssController->(.+?)Action())'
-
-acls:
-  Everybody:
-    methods:
-      'M12.Plugin.Blog:Frontend': GRANT
+roles:
+  'TYPO3.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'M12.Plugin.Blog:Frontend'
+        permission: GRANT
