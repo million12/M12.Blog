@@ -1,7 +1,7 @@
 
 'M12.Plugin.Blog:Post':
   superTypes:
-    - 'TYPO3.Neos:Document'
+    'TYPO3.Neos:Document': TRUE
   ui:
     label: 'Blog Post'
     icon: 'icon-file-text'
@@ -35,7 +35,7 @@
         inspector:
           group: document
     datePublished:
-      type: date
+      type: DateTime
       ui:
         label: 'Publication Date'
         reloadIfChanged: true
@@ -62,7 +62,7 @@
 
 'M12.Plugin.Blog:PostPlugin':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Plugin': TRUE
   ui:
     label: 'Blog Posts Overview'
     group: plugins

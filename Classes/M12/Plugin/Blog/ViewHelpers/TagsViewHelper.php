@@ -30,6 +30,8 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
  */
 class TagsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
+	protected $escapeOutput = FALSE;
+
 	/**
 	 * @Flow\Inject
 	 * @var \M12\Plugin\Blog\Service\ContentService

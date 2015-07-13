@@ -15,15 +15,9 @@ prototype(M12.Plugin.Blog:Post) < prototype(TYPO3.TypoScript:Template) {
 
 	synopsis = TYPO3.Neos:ContentCollection {
 		nodePath = 'synopsis'
-		@cache {
-			mode = 'cached'
-		}
 	}
 	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
-		@cache {
-			mode = 'cached'
-		}
 	}
 }
 
